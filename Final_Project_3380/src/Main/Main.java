@@ -188,22 +188,29 @@ public class Main {
             }
         }
         
-        String[][] bandwaggoners = new String[rowCount][2];
+        String[][] bandwagoners = new String[rowCount][2];
         
         int index = 0;
         // FANS: Driver_no, Name, Fan_of
         // RACER: Driver_no, Fname, Lname, Team, Current_wins, Current_losses
         for (String[] row : FANdata) {
             if(Integer.parseInt(row[0]) == Integer.parseInt(bestRacerRecord[0])) {
-            	bandwaggoners[index] = row;
+            	bandwagoners[index] = row;
             }
         }
-        System.out.println("\nBandwaggoners:");
-        for (String[] bandwaggoner : bandwaggoners) {
-        	for (String str : bandwaggoner) {
+        
+        System.out.println("\nbandwagoners:");
+        for (String[] bandwagoner : bandwagoners) {
+        	for (String str : bandwagoner) {
                 System.out.print(str);
                 System.out.print(" ");
             }
         }
+        
+        System.out.println("The bandwagoner to regular fan ratio:");
+        System.out.println(FANdata.length);
+        System.out.println(bandwagoners.length);
+        float ratio = bandwagoners.length/FANdata.length;
+        System.out.println(ratio);
     }
 }
