@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.*;
 import java.util.List;
+import Main.method1;
 
 public class Main {
     public static void main(String[] args) {
@@ -54,18 +55,18 @@ public class Main {
             e.printStackTrace();
         }
         
-        for (String[] row : RACERdata) { //Print RACERs
-            for (String element : row) {
-                System.out.print(element + " ");
-            }
-            System.out.println(); // new line after each row
-        }
+//        for (String[] row : RACERdata) { //Print RACERs
+//            for (String element : row) {
+//                System.out.print(element + " ");
+//            }
+//            System.out.println(); // new line after each row
+//        }
         
         
         rowCount = 0;
         columnCount = 0;
         
-        System.out.println();
+//        System.out.println();
         
         try (BufferedReader calculateDimensions = new BufferedReader(new FileReader(fileDRIVER_RECORDS))) {
         	calculateDimensions.readLine();//Skip first line
@@ -99,18 +100,18 @@ public class Main {
             e.printStackTrace();
         }
         
-        for (String[] row : DRIVER_RECORDSdata) { //Print Driver Records
-            for (String element : row) {
-                System.out.print(element + " ");
-            }
-            System.out.println(); // new line after each row
-        }
+//        for (String[] row : DRIVER_RECORDSdata) { //Print Driver Records
+//            for (String element : row) {
+//                System.out.print(element + " ");
+//            }
+//            System.out.println(); // new line after each row
+//        }
         
         
         rowCount = 0;
         columnCount = 0;
         
-        System.out.println();
+//        System.out.println();
         
         try (BufferedReader calculateDimensions = new BufferedReader(new FileReader(fileFAN))) {
         	calculateDimensions.readLine();//Skip first line
@@ -144,73 +145,24 @@ public class Main {
             e.printStackTrace();
         }
         
-        for (String[] row : FANdata) { //Print Fans
-            for (String element : row) {
-                System.out.print(element + " ");
-            }
-            System.out.println(); // new line after each row
-        }
+//        for (String[] row : FANdata) { //Print Fans
+//            for (String element : row) {
+//                System.out.print(element + " ");
+//            }
+//            System.out.println(); // new line after each row
+//        }
        
         
+        method1 test = new method1();
+        String[][] bandwagoners = test.method1bandwagoners(DRIVER_RECORDSdata, RACERdata, FANdata);
         
-        //First Function
-        
-        System.out.println("");
-        
-        String[] bestRacer = {"0", "0", "0", "0"};
-        
-        //Find best racer.
-        for (String[] row : DRIVER_RECORDSdata) { // Driver_no, Season, Current_season_wins, Current_season_losses
-        	if(Integer.parseInt(row[2]) > Integer.parseInt(bestRacer[2])) {
-        		bestRacer = row;
-        	}
-        }
-        
-        String[] bestRacerRecord = {"", "", "", "", "", ""};
-        
-        for (String[] row : RACERdata) { // Driver_no, Fname, Lname, Team, Current_wins, Current_losses
-        	if(Integer.parseInt(row[0]) == Integer.parseInt(bestRacer[0])) {
-        		bestRacerRecord = row;
-        	}
-        }
-        
-        System.out.println("Best Racer: ");
-        for (String str : bestRacerRecord) {
-            System.out.print(str);
-            System.out.print(" ");
-        }
-        
-        rowCount = 0;
-        
-        for (String[] row : FANdata) {
-            if(Integer.parseInt(row[0]) == Integer.parseInt(bestRacerRecord[0])) {
-            	rowCount++;
-            }
-        }
-        
-        String[][] bandwagoners = new String[rowCount][2];
-        
-        int index = 0;
-        // FANS: Driver_no, Name, Fan_of
-        // RACER: Driver_no, Fname, Lname, Team, Current_wins, Current_losses
-        for (String[] row : FANdata) {
-            if(Integer.parseInt(row[0]) == Integer.parseInt(bestRacerRecord[0])) {
-            	bandwagoners[index] = row;
-            }
-        }
-        
-        System.out.println("\nbandwagoners:");
+        System.out.println("\nBandwagoners in main:");
         for (String[] bandwagoner : bandwagoners) {
-        	for (String str : bandwagoner) {
-                System.out.print(str);
-                System.out.print(" ");
+            for (String str : bandwagoner) {
+                System.out.print(str + " ");
             }
+            System.out.println(); // New line after each bandwagoner
         }
         
-        System.out.println("The bandwagoner to regular fan ratio:");
-        System.out.println(FANdata.length);
-        System.out.println(bandwagoners.length);
-        float ratio = bandwagoners.length/FANdata.length;
-        System.out.println(ratio);
     }
 }
