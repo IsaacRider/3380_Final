@@ -27,10 +27,8 @@ public class method1 {
         }
         
         System.out.println("Best Racer: ");
-        for (String str : bestRacerRecord) {
-            System.out.print(str);
-            System.out.print(" ");
-        }
+        System.out.println("Name: " + bestRacerRecord[1] + bestRacerRecord[2] + " Driver number: " + bestRacerRecord[0] + "\n"
+        		+ "Wins: " + bestRacerRecord[3] + " Loses: " + bestRacerRecord[4] + " Team: " + bestRacerRecord[5]);
         
         rowCount = 0;
         
@@ -53,15 +51,12 @@ public class method1 {
         
         System.out.println("\nbandwagoners:");
         for (String[] bandwagoner : bandwagoners) {
-        	for (String str : bandwagoner) {
-                System.out.print(str);
-                System.out.print(" ");
-            }
+        	if(bandwagoner[1] != null) {
+        		System.out.println("Name: " + bandwagoner[1]);
+        	}
         }
         
         System.out.println("\nThe bandwagoner to regular fan ratio:");
-//        System.out.println(FANdata.length);
-//        System.out.println(bandwagoners.length);
         float ratio = bandwagoners.length/FANdata.length;
         System.out.println(ratio);
         
